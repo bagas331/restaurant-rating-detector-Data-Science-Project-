@@ -1,106 +1,113 @@
-# Restaurant Rating Detector - Data Science Project
+Berikut adalah README.md yang sudah dirancang secara profesional dan SEO-friendly untuk folder proyek prediksi rating restoran menggunakan Streamlit dan machine learning:
 
-## 📖 Project Overview
+---
 
-**Restaurant Rating Detector** is a machine learning application designed to predict restaurant ratings based on various operational, environmental, and demographic features. Leveraging established statistical theories and empirical methods, this project aims to provide restaurateurs and food-tech platforms with reliable insights into customer satisfaction and business performance.
+```markdown
+# 🍽️ Restaurant Rating Predictor — Machine Learning Web App with Streamlit
 
-### 🎯 Objectives
+This project is a web-based application that predicts restaurant ratings based on various features using a pre-trained machine learning model. Built using **Python**, **Streamlit**, and **scikit-learn**, the app enables real-time prediction with a clean UI and integrated data preprocessing.
 
-* Systematically analyze and preprocess dataset attributes to maximize predictive accuracy.
-* Develop and evaluate multiple regression models following best practices in supervised learning.
-* Deploy a user-friendly web interface for on-the-fly rating predictions using Streamlit.
+---
 
-## 📁 Repository Structure
+## 📁 Project Structure
 
 ```
-├── Dataset.csv                # Raw dataset of restaurant features and historical ratings
-├── restaurant_rating_predictor.ipynb  # Exploratory data analysis & model development notebook
-├── model.pkl                  # Serialized trained regression model
-├── Scaler.pkl                 # Serialized feature scaler (StandardScaler)
-├── app.py                     # Streamlit app for real-time rating predictions
-└── README.md                  # Project documentation (this file)
-```
 
-## 🔬 Methodology
+📦 restaurant-rating-predictor/
+├── Dataset.csv                      # Dataset used to train the model
+├── Scaler.pkl                       # Trained StandardScaler object
+├── model.pkl                        # Trained prediction model (e.g., regression)
+├── app.py                           # Main Streamlit application file
+├── restaurant\_rating\_predictor.ipynb # Jupyter notebook for EDA & model training
+└── README.md                        # Project documentation
 
-1. **Data Collection & Cleaning**
+````
 
-   * Imported `Dataset.csv` containing quantitative attributes (e.g., number of seats, staff size, average meal price) and qualitative factors (e.g., cuisine type, location demographics).
-   * Handled missing values using median imputation and one-hot encoded categorical variables.
+---
 
-2. **Feature Engineering & Scaling**
+## 📦 Dependencies
 
-   * Engineered interaction terms and polynomial features based on correlation analysis.
-   * Applied **StandardScaler** to normalize continuous features, reducing model bias towards large-scale attributes.
-
-3. **Model Development**
-
-   * Compared multiple regression algorithms: Linear Regression, Ridge, Lasso, and Random Forest Regressor.
-   * Used cross-validation (k=5) to assess generalization error and prevent overfitting.
-   * Selected the model with the lowest Root Mean Square Error (RMSE) on the validation set.
-
-4. **Serialization**
-
-   * Serialized the final model (`model.pkl`) and scaler (`Scaler.pkl`) using `joblib` for production deployment.
-
-5. **Deployment**
-
-   * Built an interactive **Streamlit** app (`app.py`) to input feature values and display predicted ratings in real-time.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-* Python 3.8+
-* Conda or virtualenv (recommended)
-
-### Installation
+To install required libraries:
 
 ```bash
-# Clone the repository
-git clone https://github.com/<username>/restaurant-rating-detector-Data-Science-Project.git
-cd restaurant-rating-detector-Data-Science-Project
+pip install streamlit pandas numpy seaborn matplotlib scikit-learn
+````
 
-# Create and activate environment
-conda create -n rating-detector python=3.8 -y
-conda activate rating-detector
+Or use the `requirements.txt` file if available:
 
-# Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-### Running the Streamlit App
+---
+
+## 🚀 How to Run
 
 ```bash
 streamlit run app.py
 ```
 
-Open `http://localhost:8501` in your browser to interact with the rating predictor.
-
-## 📈 Results & Evaluation
-
-* **Best Model**: Random Forest Regressor
-* **Validation RMSE**: 0.42 (5-fold CV)
-* **Test RMSE**: 0.45
-* **R² Score** on Test Set: 0.76
-
-These metrics demonstrate a strong predictive capability, aligning with established regression theory on bias-variance trade-off and ensemble methods.
-
-## 📑 SEO & Business Relevance
-
-* **Keywords**: restaurant rating prediction, machine learning, data science, Streamlit deployment, Random Forest Regressor
-* **Use Cases**: Enhancing customer satisfaction, optimizing menu pricing, location-based performance analysis, food-tech platform integrations.
-
-## 🔮 Future Work
-
-* Integrate additional external data sources (e.g., social media sentiment, foot traffic analysis).
-* Experiment with advanced models (e.g., XGBoost, LightGBM) for improved performance.
-* Containerize with Docker and deploy on cloud platforms (AWS, GCP, Azure).
-
-## 📝 License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+Then, navigate to [http://localhost:8501](http://localhost:8501) in your web browser.
 
 ---
 
-*Empirical. Systematic. Logical. Up-to-date.*
+## 🎯 Features
+
+* 📂 **Upload CSV or Input Manually**
+  Supports both dataset upload and real-time user input.
+
+* ⚙️ **Data Preprocessing with Scaler**
+  Uses `Scaler.pkl` to standardize user input for accurate predictions.
+
+* 🤖 **Rating Prediction**
+  Predicts numerical restaurant ratings using `model.pkl`.
+
+* 📊 **Exploratory Data Analysis**
+  The notebook `restaurant_rating_predictor.ipynb` contains complete EDA and model training steps.
+
+---
+
+## 🧠 Model Info
+
+The machine learning pipeline includes:
+
+* Feature engineering using `pandas` and `numpy`
+* Visualizations with `seaborn` and `matplotlib`
+* Model training using `scikit-learn` (e.g., LinearRegression, RandomForest, etc.)
+* Scaling via `StandardScaler` before feeding data into the model
+
+Both the scaler and model are serialized using `joblib` or `pickle` and loaded in `app.py`.
+
+---
+
+## 🔍 Example Code Snippet (`app.py`)
+
+```python
+import pandas as pd
+import joblib
+
+# Load scaler and model
+scaler = joblib.load("Scaler.pkl")
+model = joblib.load("model.pkl")
+
+# Sample input
+input_data = pd.DataFrame({
+    'Votes': [340],
+    'Cost': [500],
+    'Online_order': [1],
+    'Book_table': [0],
+    # ... other features
+})
+
+# Preprocess and predict
+scaled = scaler.transform(input_data)
+prediction = model.predict(scaled)
+
+st.write("Predicted Rating:", round(prediction[0], 2))
+```
+
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
+
