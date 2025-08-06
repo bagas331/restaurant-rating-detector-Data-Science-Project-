@@ -1,8 +1,3 @@
-Berikut adalah README.md yang sudah dirancang secara profesional dan SEO-friendly untuk folder proyek prediksi rating restoran menggunakan Streamlit dan machine learning:
-
----
-
-```markdown
 # 🍽️ Restaurant Rating Predictor — Machine Learning Web App with Streamlit
 
 This project is a web-based application that predicts restaurant ratings based on various features using a pre-trained machine learning model. Built using **Python**, **Streamlit**, and **scikit-learn**, the app enables real-time prediction with a clean UI and integrated data preprocessing.
